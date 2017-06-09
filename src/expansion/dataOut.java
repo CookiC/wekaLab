@@ -3,6 +3,7 @@ package expansion;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 
 import weka.core.Instances;
@@ -12,6 +13,8 @@ import weka.core.converters.CSVSaver;
 public class dataOut {
 	
 	private final String root="results";
+	
+	//private String classPath=Thread.currentThread().getContextClassLoader().getResource("").toString();
 	
 	private String mainDir;
 	
@@ -60,14 +63,11 @@ public class dataOut {
 		outFile.close();
 	}
 	
-	public void outCSV(String name,String[] colNames,String[] rowNames,int[][] a) throws IOException{
+	public void outCSV(String name,String[] rowNames,String[] colNames,int[][] a) throws IOException{
 		int i,j;
 		FileWriter outFile=new FileWriter(mainDir+subDir+name+".csv");
-		for(i=0;i<colNames.length;++i){
-			if(i>0)
-				outFile.write(',');
-			outFile.write(colNames[i]);
-		}
+		for(i=0;i<colNames.length;++i)
+			outFile.write(","+colNames[i]);
 		outFile.write('\n');
 		for(i=0;i<a.length;++i){
 			outFile.write(rowNames[i]);
@@ -81,11 +81,8 @@ public class dataOut {
 	public void outCSV(String name,String[] rowNames,String[] colNames,double[][] a) throws IOException{
 		int i,j;
 		FileWriter outFile=new FileWriter(mainDir+subDir+name+".csv");
-		for(i=0;i<colNames.length;++i){
-			if(i>0)
-				outFile.write(',');
-			outFile.write(colNames[i]);
-		}
+		for(i=0;i<colNames.length;++i)
+			outFile.write(","+colNames[i]);
 		outFile.write('\n');
 		for(i=0;i<a.length;++i){
 			outFile.write(rowNames[i]);

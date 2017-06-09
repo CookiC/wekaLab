@@ -43,7 +43,7 @@ public class MOFESP extends expansion.experiment{
 	
 	private final String[] statNames={"FN","AUC"};
 	
-	private final int runtimes=1;
+	private final int runtimes=10;
 	
 	private final Random rnd=new Random(13);
 	
